@@ -1,13 +1,17 @@
+import Footer from "@/components/modules/home/Footer";
+import Navbar from "@/components/modules/home/Navbar";
 import React from "react";
 
 const HomeLayout = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-base-100">
       <header>
-        <nav>Navbar</nav>
+        <Navbar />
       </header>
       <main className="flex-1">{children}</main>
-      <footer>Footer</footer>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
