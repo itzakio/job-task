@@ -27,7 +27,7 @@ const reviews = [
 
 const ReviewsSection = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-14">
+    <section className="max-w-360 mx-auto px-4 py-14">
       {/* Header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold">What Our Customers Say</h2>

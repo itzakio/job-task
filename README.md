@@ -54,3 +54,7 @@ It allows users to browse, compare, and view detailed tech products with a clean
 git clone <repository-url>
 cd tech-shop
 npm install
+```
+## Homepage:
+
+<img src='./public/home.png' />
