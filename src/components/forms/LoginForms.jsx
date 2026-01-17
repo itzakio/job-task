@@ -1,24 +1,38 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
+const DEMO_EMAIL = "itzakio3@gmail.com";
+const DEMO_PASSWORD = "123456";
+
 const LoginForms = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
+
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
   const loginHandler = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    if (email === "itzakio3@gmail.com" && password === "123456") {
-      document.cookie = 'auth=true; path=/'
-      toast.success('Successfully Logged in !')
-      router.push('/all-gadgets')
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+      document.cookie = "auth=true; path=/";
+      toast.success("Successfully Logged in!");
+      router.push("/all-gadgets");
     } else {
-      toast.error("Email or password is wrong")
+      toast.error("Email or password is wrong");
     }
+  };
+
+  const fillDemoCredentials = () => {
+    emailRef.current.value = DEMO_EMAIL;
+    passwordRef.current.value = DEMO_PASSWORD;
+    toast.success("Demo credentials filled");
   };
 
   return (
@@ -37,7 +51,7 @@ const LoginForms = () => {
           <span className="label-text">Email</span>
         </label>
         <input
-          name="email"
+          ref={emailRef}
           type="email"
           placeholder="name@gadgetshop.com"
           className="input input-bordered rounded-xl w-full"
@@ -53,7 +67,7 @@ const LoginForms = () => {
 
         <div className="relative">
           <input
-            name="password"
+            ref={passwordRef}
             type={showPassword ? "text" : "password"}
             placeholder="••••••••"
             className="input input-bordered rounded-xl w-full pr-12"
@@ -80,12 +94,21 @@ const LoginForms = () => {
         <a className="link link-hover text-primary">Forgot Password?</a>
       </div>
 
-      {/* Button */}
+      {/* Login Button */}
       <button
         type="submit"
         className="btn btn-primary w-full rounded-xl text-base tracking-wide"
       >
         Login
+      </button>
+
+      {/* Demo Button */}
+      <button
+        type="button"
+        onClick={fillDemoCredentials}
+        className="btn btn-outline btn-secondary w-full rounded-xl"
+      >
+        Use Demo Credentials
       </button>
 
       {/* Divider */}

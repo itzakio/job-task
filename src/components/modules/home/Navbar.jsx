@@ -1,31 +1,68 @@
 "use client";
 
-
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path) => {
+    return pathname === path || pathname.startsWith(path + "/");
+  };
+
   const links = (
     <>
       <li>
-        <Link href="/" className="hover:text-primary transition">
+        <Link
+          href="/"
+          className={`transition ${
+            isActive("/")
+              ? "text-primary font-semibold border-b-2 border-primary"
+              : "hover:text-primary"
+          }`}
+        >
           Home
         </Link>
       </li>
+
       <li>
-        <Link href="/all-gadgets" className="hover:text-primary transition">
+        <Link
+          href="/all-gadgets"
+          className={`transition ${
+            isActive("/all-gadgets")
+              ? "text-primary font-semibold border-b-2 border-primary"
+              : "hover:text-primary"
+          }`}
+        >
           All Gadgets
         </Link>
       </li>
+
       <li>
-        <Link href="/add-gadget" className="hover:text-primary transition">
+        <Link
+          href="/add-gadget"
+          className={`transition ${
+            isActive("/add-gadget")
+              ? "text-primary font-semibold border-b-2 border-primary"
+              : "hover:text-primary"
+          }`}
+        >
           Add Gadget
         </Link>
       </li>
+
       <li>
-        <Link href="/about" className="hover:text-primary transition">
+        <Link
+          href="/about"
+          className={`transition ${
+            isActive("/about")
+              ? "text-primary font-semibold border-b-2 border-primary"
+              : "hover:text-primary"
+          }`}
+        >
           About
         </Link>
       </li>
@@ -35,6 +72,7 @@ export default function Navbar() {
       </Link>
     </>
   );
+
   return (
     <>
       {/* Navbar */}
@@ -45,9 +83,7 @@ export default function Navbar() {
             <h1 className="text-2xl font-extrabold tracking-tight">
               Tech<span className="text-primary">Shop</span>
             </h1>
-           
           </Link>
-
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-8 font-medium">
@@ -60,9 +96,7 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-      <div className="h-18">
-        {/* space */}
-      </div>
+      <div className="h-18">{/* space */}</div>
 
       {/* Overlay */}
       {open && (
