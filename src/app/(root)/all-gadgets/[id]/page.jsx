@@ -32,7 +32,7 @@ const GadgetDetails = async ({ params }) => {
   } = gadget;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-360 mx-auto px-4 py-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Image */}
         <div className="card bg-base-200 shadow-xl">
@@ -42,7 +42,7 @@ const GadgetDetails = async ({ params }) => {
               alt={name}
               width={500}
               height={500}
-              className="rounded-xl"
+              className="rounded-xl "
             />
           </figure>
         </div>
