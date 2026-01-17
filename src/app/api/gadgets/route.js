@@ -1,4 +1,5 @@
 import { connect } from "@/app/lib/dbConnect";
+import { revalidatePath } from "next/cache";
 
 const gadgetsCollection = connect("gadgets");
 
@@ -15,7 +16,8 @@ export const POST = async (request) => {
       message: "Please provide a gadget information!",
     });
   }
-  const newGadget = { ...gadget, date: new Date().toISOString() };
+  const newGadget = {...gadget};
   const result = await gadgetsCollection.insertOne(newGadget);
+  revalidatePath("/all-gadgets")
   return Response.json(result);
 };

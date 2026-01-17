@@ -1,5 +1,6 @@
 "use client";
 
+
 import Link from "next/link";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -44,7 +45,9 @@ export default function Navbar() {
             <h1 className="text-2xl font-extrabold tracking-tight">
               Tech<span className="text-primary">Shop</span>
             </h1>
+           
           </Link>
+
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-8 font-medium">
